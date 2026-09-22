@@ -1,4 +1,4 @@
-export const initialTasks = [
+const initialTasks = [
   {
     id: "1",
     title: "Build portfolio website",
@@ -43,3 +43,5 @@ export const initialTasks = [
     createdAt: "2026-09-21",
   },
 ];
+
+export default initialTasks;
