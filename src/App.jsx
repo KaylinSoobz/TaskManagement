@@ -1,9 +1,13 @@
+
+import Layout from "./components/Layout.jsx";
+import DashBoard from "./components/DashBoard.jsx";
+
 function App() {
   return (
-    <div>
-      <h1>TaskFlow</h1>
-    </div>
-  );
+    <Layout>
+      <DashBoard/>
+    </Layout>
+  )
 }
 
 export default App;
