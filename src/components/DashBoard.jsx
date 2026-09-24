@@ -32,7 +32,72 @@ const colorMap = {
                      <h3 className="pl-2 mr-2">Completed</h3>
                      <section className="text-green-500">{percent}%</section>
                 </div>
-             )}};
+             )}
+            else if (props.process === "displayCategories"){
+                return (
+                    <div className="flex w-1/3 h-full flex-col border border-gray-4000">
+                        <h2 >Category</h2>
+                        <div className="flex flex-row w-full h-full">
+                        <div className="flex flex-col w-1/3">
+                            <div>
+                             <input type="checkbox"/>
+                             <label className="ml-1">All</label>  
+                            </div>
+                            <div>
+                             <input type="checkbox"/>
+                             <label className="ml-1">Work</label>  
+                            </div>
+                            <div>
+                             <input type="checkbox"/>
+                             <label className="ml-1">Learning</label>  
+                            </div>
+                            <div>
+                             <input type="checkbox"/>
+                             <label className="ml-1">Personal</label>  
+                            </div>
+                            <div>
+                             <input type="checkbox"/>
+                             <label className="ml-1">Health</label>  
+                            </div>
+                        </div>
+                        <div className="h-full w-full border border-gray-300 ml-1 ">
+
+                        </div>
+                        </div>
+                    </div>
+                )
+            }
+            else if (props.process === "displayPriority"){
+                return (
+                    <div className="flex w-1/3 h-full flex-col border border-gray-400">
+                        <h2 className="text-end">Priority</h2>
+                        <div className="flex flex-row w-full h-full">
+                        <div className="h-full w-full border border-gray-300 ml-1 ">
+
+                        </div>
+                        <div className="flex flex-col w-1/3 items-end">
+                            <fieldset >
+                            <div className="flex justify-end">
+                            <label className="mr-1">Low</label>
+                             <input type="radio" name="priority" value="low"/>  
+                            </div>
+                            <div className="flex justify-end">
+                            <label className="mr-1">Medium</label>
+                             <input type="radio" name="priority" value="medium"/>  
+                            </div>
+                            <div className="flex justify-end">
+                            <label className="mr-1">High</label>
+                             <input type="radio" name="priority" value="high"/> 
+                             </div> 
+                            </fieldset>
+                        </div>
+                        </div>
+                    </div>
+                )
+            }
+        };
+
+
              return Process();
     }
 
@@ -88,7 +153,19 @@ const DashBoard = () => {
                 </div>
             </div>
             <DisplayPriority />
-        </div>
+            <div className="flex flex-row w-full h-1/3 mt-6 justify-around">
+                    <TaskProcess
+                        process="displayCategories"
+                        taskStatus="todo"
+                        color="gray"
+                    />
+                    <TaskProcess
+                        process="displayPriority"
+                        taskStatus="todo"
+                        color="gray"
+                    />
+            </div>
+                </div>
     );
 };
 
