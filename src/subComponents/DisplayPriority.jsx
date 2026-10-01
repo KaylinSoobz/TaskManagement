@@ -7,7 +7,7 @@ const DisplayPriority = () => {
     }
 
     return (
-        <div className="flex flex-col items-center mt-6">
+        <div className="flex flex-col items-center mt-6 bg-white">
         <label className="pb-3">Task Summary</label>
         <table className="border border-gray-400 border-spacing-y-3">
             <thead>

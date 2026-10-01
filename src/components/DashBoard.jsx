@@ -1,5 +1,8 @@
 import initialTasks from "../data/tasks.jsx"
-import DisplayPriority from "../Processes/DisplayPriority.jsx"
+import getObject from "../subComponents/getObject.jsx"
+import Overdue from "../subComponents/Overdue.jsx"
+import DisplayPriority from "../subComponents/DisplayPriority.jsx"
+
 
 
 const colorMap = {
@@ -10,6 +13,9 @@ const colorMap = {
 
     const TaskProcess = (props) => {
         const count = initialTasks.reduce((tasks,task) => task.status === props.taskStatus ? tasks + 1 : tasks ,0);
+         const today = new Date();
+         const formattedDate = today.toLocaleDateString(); 
+
         const width = (count/initialTasks.length)*100
         const percent = (count/initialTasks.length)*100
         const Process = () => {
@@ -35,40 +41,40 @@ const colorMap = {
              )}
             else if (props.process === "displayCategories"){
                 return (
-                    <div className="flex w-1/3 h-full flex-col border border-gray-4000">
+                    <div className="flex w-1/3 h-full flex-col border border-gray-4000 bg-white">
                         <h2 >Filter</h2>
                         <div className="flex flex-row w-full h-full">
                         <div className="flex flex-col w-1/3 ml-1">
                             <div>
-                             <input type="checkbox"/>
+                             <input type="checkbox" id="allCheckbox"/>
                              <label className="ml-1">All</label>  
                             </div>
                             <div>
-                             <input type="checkbox"/>
+                             <input type="checkbox" id="WorkCheckbox"/>
                              <label className="ml-1">Work</label>  
                             </div>
                             <div>
-                             <input type="checkbox"/>
+                             <input type="checkbox" id="LearningCheckbox"/>
                              <label className="ml-1">Learning</label>  
                             </div>
                             <div>
-                             <input type="checkbox"/>
+                             <input type="checkbox" id="PersonalCheckbox"/>
                              <label className="ml-1">Personal</label>  
                             </div>
                             <div>
-                             <input type="checkbox"/>
+                             <input type="checkbox" id="HealthCheckbox"/>
                              <label className="ml-1">Health</label>  
                             </div>
                             <div>
-                             <input type="checkbox"/>
+                             <input type="checkbox" id="PriorityCheckbox"/>
                              <label className="ml-1">Low Priority</label>  
                             </div>
                             <div>
-                             <input type="checkbox"/>
+                             <input type="checkbox" id="MediumCheckbox"/>
                              <label className="ml-1">Medium Priority</label>  
                             </div>
                             <div>
-                             <input type="checkbox"/>
+                             <input type="checkbox" id="HighCheckbox" />
                              <label className="ml-1">High Priority</label>  
                             </div>
                         </div>
@@ -98,7 +104,7 @@ const colorMap = {
 
 const DashBoard = () => {
     return (
-        <div className="flex flex-col flex-1 h-full bg-gray-100 items-center">
+        <div className="flex flex-col flex-1 h-full bg-gray-100 items-center bg-gradient-to-r from-pink-400 to-indigo-600">
             <div className="flex flex-row w-1/2 h-2/15 justify-around mt-6">
                 <span className="flex flex-col w-1/5 items-center justify-center border border-gray-200 bg-white p-6 hover:border-green-500">
                     <TaskProcess
@@ -148,11 +154,8 @@ const DashBoard = () => {
                 </div>
             </div>
             <div className="flex flex-row w-full h-1/3 mt-6 justify-around">
-                    <TaskProcess
-                        process="displayOverdue"
-                        taskStatus="todo"
-                        color="gray"
-                    />
+            <Overdue/>
+
                     <TaskProcess
                         process="displayCategories"
                         taskStatus="todo"

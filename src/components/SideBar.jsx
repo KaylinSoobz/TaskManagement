@@ -15,6 +15,9 @@ const SideBar = () => {
                     <li className="p-3 rounded-lg  text-center text-gray-600 hover:bg-gray-100 hover:text-gray-800 hover:cursor-pointer">
                         Tasks
                     </li>
+                    <li className="p-3 rounded-lg  text-center text-gray-600 hover:bg-gray-100 hover:text-gray-800 hover:cursor-pointer">
+                        scrum board
+                    </li>
                 </ul>
             </div>
 
