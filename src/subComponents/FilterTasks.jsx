@@ -1,4 +1,3 @@
-
 import initialTasks from "../data/tasks.jsx"
 
 const FilterTasks = () => {
