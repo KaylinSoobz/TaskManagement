@@ -4,8 +4,7 @@ import initialTasks from "../data/tasks.jsx"
 const FilterTasks = () => {
 
     const [selectedFilters, setSelectedFilters] = useState([]);
-    const [selectedTasks, setSelectedTasks] = useState([]);
-
+    const [selectedTasks, setSelectedTasks] = useState(initialTasks);
 
     const handleEvent = (event ,property,value) => {
 
@@ -26,13 +25,17 @@ const FilterTasks = () => {
         else
         {
             const newFilter = selectedFilters.filter(filter => !(filter.property === property && filter.value === value));
-            setSelectedFilters(newFilter)
+            setSelectedFilters(newFilter);
+
+            if (newFilter.length === 0){
+                setSelectedTasks(initialTasks);
+            } else {
             const FilteredTasks = initialTasks.filter(task =>
             newFilter.some(filter =>
             task[filter.property] === filter.value
              )
             );
-            setSelectedTasks(FilteredTasks)
+            setSelectedTasks(FilteredTasks)}
         }
 
     }
@@ -45,10 +48,6 @@ return (
                         <h2 className="text-gray-800" >Filter</h2>
                         <div className="flex flex-row w-full h-full">
                         <div className="flex flex-col w-1/3 ml-1">
-                            <div>
-                             <input className="hover:cursor-pointer" type="checkbox" id="allCheckbox" />
-                             <label className="ml-1">All</label>  
-                            </div>
                             <div>
                              <input className="hover:cursor-pointer" type="checkbox" id="WorkCheckbox " onChange={(event) => handleEvent(event,"category", "work")}/>
                              <label className="ml-1">Work</label>  
@@ -79,7 +78,7 @@ return (
                             </div>
                         </div>
                         <div className="h-9/10 w-2/3 mr-3 border border-gray-300 ">
-                        <ul>
+                        <ul className="pl-1">
                             {
                               selectedTasks.map(task => 
                               <li key={task.id}>
