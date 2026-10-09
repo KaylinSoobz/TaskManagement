@@ -26,6 +26,7 @@ const SideBar = () => {
             </div>
 
         </div>
+        
     )
 }
 
